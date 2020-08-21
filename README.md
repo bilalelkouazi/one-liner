@@ -15,3 +15,5 @@ ping 1.1.1.1 | cut -d = -f 4
 ###### search in multiple txt files
 find -name "*.txt" | xargs grep -i "search"
 
+##### gracefully turn off all proxmox vms
+for vm in $(qm list | grep running | awk '{print $2}'); do qm shutdown $vm; done
